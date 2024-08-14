@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 10:48:08 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/08 16:50:41 by siychoi          ###   ########.fr       */
+/*   Updated: 2024/08/14 16:50:33 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "../includes/parse.h"
 
 static void	set_user_info(t_map_info *map_info, int x, int y);
 

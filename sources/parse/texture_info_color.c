@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture_info_color.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:04:43 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/02 19:50:39 by siychoi          ###   ########.fr       */
+/*   Updated: 2024/08/14 16:50:33 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "../includes/parse.h"
 
 void	is_valid_color_line(char *line, int i, int comma_cnt, int num_cnt)
 {

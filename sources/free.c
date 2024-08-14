@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 13:27:35 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/08 16:18:42 by siychoi          ###   ########.fr       */
+/*   Updated: 2024/08/14 18:46:05 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "../includes/parse.h"
 
 void	free_2d_array(char **str)
 {
-	char **first_ptr;
-	
+	char	**first_ptr;
+
 	first_ptr = str;
-	while(*str)
+	while (*str)
 	{
 		free(*str);
 		*str = NULL;
@@ -45,4 +45,10 @@ void	free_t_map_info(t_map_info *map_info)
 	free(map_info->map[i]);
 	free(map_info->map);
 	free(map_info);
+}
+
+void	free_data(t_data *data)
+{
+	free_t_map_info(data->map_info);
+	free(data);
 }

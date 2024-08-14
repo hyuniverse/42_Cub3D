@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:09:54 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/08 16:46:53 by siychoi          ###   ########.fr       */
+/*   Updated: 2024/08/14 20:09:14 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 # define PARSE_H
 # include "../libft/libft.h"
 # include "../libft/get_next_line_bonus.h"
-
-# include <fcntl.h>
+# include "cub3d.h"
 # include <stdio.h>
 
-# define TRUE 1
-# define FALSE 0
-
-# define NORTH 0
-# define SOUTH 1
-# define EAST 2
-# define WEST 3
+typedef struct s_texture
+{
+	char	*path;
+	int		*texture;
+	double	width;
+	double	height;
+}	t_texture;
 
 typedef struct s_map_info
 {
 	char			*file_path;
-	char			*north_texture;
-	char			*south_texture;
-	char			*west_texture;
-	char			*east_texture;
+	//char			*north_texture;
+	//char			*south_texture;
+	//char			*west_texture;
+	//char			*east_texture;
+	t_texture		texture[4]; //n, s, w, e
 	unsigned int	floor_color;
 	unsigned int	ceiling_color;
 	int				texture_cnt;
@@ -60,11 +60,6 @@ void	check_texture_path(t_map_info *map_info, char *id);
 
 /*-----cub3d_split.c-----*/
 char	**cub3d_split(char const *s, char c);
-
-/*-----free.c-----*/
-void	free_2d_array(char **str);
-void	free_t_map_info(t_map_info *map_info);
-void	get_map(t_map_info *map_info, int fd);
 
 /*-----map_info.c-----*/
 void	get_map(t_map_info *map_info, int fd);

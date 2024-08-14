@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 19:32:53 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/08 16:16:35 by siychoi          ###   ########.fr       */
+/*   Updated: 2024/08/14 16:50:33 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "../includes/parse.h"
 
 static int	cub3d_split_count(char const *s, char c);
 static int	cub3d_make_result2(char const *s, char **result, int i, int j);

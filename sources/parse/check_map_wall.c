@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_wall.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:54:11 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/08 15:46:28 by siychoi          ###   ########.fr       */
+/*   Updated: 2024/08/14 16:50:33 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "../includes/parse.h"
 
 void	check_north_wall(t_map_info *map_info, int x, int y)
 {
