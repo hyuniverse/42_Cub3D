@@ -7,10 +7,10 @@ void	check(void)
 
 void	check_parsing(t_map_info *map_info)
 {
-	printf("map_info->north_texture = %s\n", map_info->north_texture);
-	printf("map_info->south_texture = %s\n", map_info->south_texture);
-	printf("map_info->east_texture = %s\n", map_info->west_texture);
-	printf("map_info->west_texture = %s\n", map_info->east_texture);
+	printf("map_info->north_texture = %s\n", map_info->texture[NORTH].path);
+	printf("map_info->south_texture = %s\n", map_info->texture[SOUTH].path);
+	printf("map_info->east_texture = %s\n", map_info->texture[EAST].path);
+	printf("map_info->west_texture = %s\n", map_info->texture[WEST].path);
 	printf("map_info->floor_color = %d\n", map_info->floor_color);
 	printf("map_info->ceiling_color = %d\n", map_info->ceiling_color);
 	printf("map_info->map_user_x = %d\n", map_info->user_x);

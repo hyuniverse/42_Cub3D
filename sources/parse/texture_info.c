@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 19:53:04 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/14 16:50:33 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:16:42 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ void	set_texture_info(t_map_info *map_info, char *line)
 	char	**splited_line;
 
 	splited_line = cub3d_split(line, ' ');
-	if (cub3d_strcmp(splited_line[0], "NO") == 0 && map_info->north_texture == NULL)
-		map_info->north_texture = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
-	else if (cub3d_strcmp(splited_line[0], "SO") == 0 && map_info->south_texture == NULL)
-		map_info->south_texture = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
-	else if (cub3d_strcmp(splited_line[0], "WE") == 0 && map_info->west_texture == NULL)
-		map_info->west_texture = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
-	else if (cub3d_strcmp(splited_line[0], "EA") == 0 && map_info->east_texture == NULL)
-		map_info->east_texture = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
+	if (cub3d_strcmp(splited_line[0], "NO") == 0 && map_info->texture[NORTH].path == NULL)
+		map_info->texture[NORTH].path = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
+	else if (cub3d_strcmp(splited_line[0], "SO") == 0 && map_info->texture[SOUTH].path == NULL)
+		map_info->texture[SOUTH].path= ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
+	else if (cub3d_strcmp(splited_line[0], "WE") == 0 && map_info->texture[WEST].path == NULL)
+		map_info->texture[WEST].path = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
+	else if (cub3d_strcmp(splited_line[0], "EA") == 0 && map_info->texture[EAST].path == NULL)
+		map_info->texture[EAST].path = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
 	else if (cub3d_strcmp(splited_line[0], "F") == 0 && map_info->floor_color == (unsigned int)-1)
 		map_info->floor_color = str_to_rgb(splited_line[1]);
 	else if (cub3d_strcmp(splited_line[0], "C") == 0 && map_info->ceiling_color == (unsigned int)-1)

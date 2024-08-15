@@ -3,24 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+         #
+#    By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/01 17:23:47 by siychoi           #+#    #+#              #
-#    Updated: 2024/08/08 16:54:42 by siychoi          ###   ########.fr        #
+#    Updated: 2024/08/15 18:32:38 by sehyupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= parsing
+NAME		= cub3d
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -O3
+CLIB		= -Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
 #-fsanitize=address
 RM			= rm
 RMFLAG		= -f
-SRC			= main ./parse/check_error ./parse/check_map_wall ./parse/check_texture_path ./parse/cub3d_split ./parse/free ./parse/map_info ./parse/struct_map ./parse/texture_info ./parse/texture_info_color ./parse/utils
-SRCS		= $(addsuffix .c, $(SRC))
+INCLUDE		= ./includes/cub3d.h ./includes/parse.h ./includes/render.h
+SRCS		= $(COMMON_SRCS) $(PARSE_SRCS) $(RENDER_SRCS)
 OBJS		= $(SRCS:.c=.o)
+COMMON_DIR	= ./sources/
+PARSE_DIR	= ./sources/parse/
+RENDER_DIR	= ./sources/render/
+COMMON_SRCS	= $(addprefix $(COMMON_DIR), main.c free.c debug.c)
+PARSE_SRCS	= $(addprefix $(PARSE_DIR), check_error.c check_map_wall.c \
+			  check_texture_path.c cub3d_split.c map_info.c struct_map.c \
+			  texture_info_color.c texture_info.c utils.c)
+RENDER_SRCS	= $(addprefix $(RENDER_DIR), render.c dda.c raycast_methods.c \
+			  initialize.c utils.c hooks.c render_error.c)
 
 all : $(NAME)
+
+%.o : %.c
+		$(CC) $(CFLAGS) -Imlx -c $< -o $@ -Iincludes
+
+$(NAME) : $(OBJS)
+		make -C Libft
+		$(CC) $(CFLAGS) $(CLIB) -o $@ $^ -LLibft -lft -Iincludes
 
 clean :
 		$(RM) $(RMFLAG) $(OBJS)
@@ -32,14 +49,5 @@ fclean :
 
 re : fclean
 	$(MAKE) all
-
-bonus : 
-
-%.o : %.c
-		$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
-
-$(NAME) : $(OBJS)
-		make -C Libft
-		$(CC) $(CFLAGS) -o $@ $^ -LLibft -lft
 
 .PHONY : all clean fclean re

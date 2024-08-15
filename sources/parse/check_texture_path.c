@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 14:40:15 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/14 16:50:33 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:19:08 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static void	check_north_path(t_map_info *map_info)
 	char	*path;
 	int		fd;
 
-	path = map_info->north_texture;
-	if (cub3d_strcmp(path, map_info->south_texture) == 0)
+	path = map_info->texture[NORTH].path;
+	if (cub3d_strcmp(path, map_info->texture[SOUTH].path) == 0)
 		print_error("Error");
-	else if (cub3d_strcmp(path, map_info->west_texture) == 0)
+	else if (cub3d_strcmp(path, map_info->texture[WEST].path) == 0)
 		print_error("Error");
-	else if (cub3d_strcmp(path, map_info->east_texture) == 0)
+	else if (cub3d_strcmp(path, map_info->texture[EAST].path) == 0)
 		print_error("Error");
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -54,12 +54,12 @@ static void	check_south_path(t_map_info *map_info)
 	char	*path;
 	int		fd;
 
-	path = map_info->south_texture;
-	if (cub3d_strcmp(path, map_info->north_texture) == 0)
+	path = map_info->texture[SOUTH].path;
+	if (cub3d_strcmp(path, map_info->texture[NORTH].path) == 0)
 		print_error("Error");
-	else if (cub3d_strcmp(path, map_info->west_texture) == 0)
+	else if (cub3d_strcmp(path, map_info->texture[WEST].path) == 0)
 		print_error("Error");
-	else if (cub3d_strcmp(path, map_info->east_texture) == 0)
+	else if (cub3d_strcmp(path, map_info->texture[EAST].path) == 0)
 		print_error("Error");
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -72,12 +72,12 @@ static void	check_west_path(t_map_info *map_info)
 	char	*path;
 	int		fd;
 
-	path = map_info->west_texture;
-	if (cub3d_strcmp(path, map_info->south_texture) == 0)
+	path = map_info->texture[WEST].path;
+	if (cub3d_strcmp(path, map_info->texture[SOUTH].path) == 0)
 		print_error("Error");
-	else if (cub3d_strcmp(path, map_info->north_texture) == 0)
+	else if (cub3d_strcmp(path, map_info->texture[NORTH].path) == 0)
 		print_error("Error");
-	else if (cub3d_strcmp(path, map_info->east_texture) == 0)
+	else if (cub3d_strcmp(path, map_info->texture[EAST].path) == 0)
 		print_error("Error");
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -90,12 +90,12 @@ static void	check_east_path(t_map_info *map_info)
 	char	*path;
 	int		fd;
 
-	path = map_info->east_texture;
-	if (cub3d_strcmp(path, map_info->south_texture) == 0)
+	path = map_info->texture[EAST].path;
+	if (cub3d_strcmp(path, map_info->texture[SOUTH].path) == 0)
 		print_error("Error");
-	else if (cub3d_strcmp(path, map_info->west_texture) == 0)
+	else if (cub3d_strcmp(path, map_info->texture[WEST].path) == 0)
 		print_error("Error");
-	else if (cub3d_strcmp(path, map_info->north_texture) == 0)
+	else if (cub3d_strcmp(path, map_info->texture[NORTH].path) == 0)
 		print_error("Error");
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
