@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:46:19 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/15 15:26:08 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/16 20:58:01 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ double	get_delta(double ray_dir)
 
 int	get_dir(double component_value, char component)
 {
-	if (component == 'x')
+	if (component == 'y')
 	{
 		if (component_value > 0)
 			return (SOUTH);
@@ -63,8 +63,8 @@ int	get_dir(double component_value, char component)
 	else
 	{
 		if (component_value > 0)
-			return (EAST);
-		else
 			return (WEST);
+		else
+			return (EAST);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 19:11:28 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/15 20:34:47 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/16 19:19:49 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,6 @@ typedef struct s_int_vector
 	int	y;
 }	t_int_vector;
 
-typedef	struct s_mlx
-{
-
-}	t_mlx;
-
 typedef struct s_draw
 {
 	double			perp_wall_dist;
@@ -96,18 +91,21 @@ typedef struct s_cast
 	int				hit;
 }	t_cast;
 
-
-typedef struct s_data
+typedef	struct s_mlx
 {
 	void		*mlx;
 	void		*win;
 	void		*img;
 	char		*addr;
-	int			width;
-	int			height;
 	int			bpp;
 	int			line_length;
 	int			endian;
+}	t_mlx;
+
+
+typedef struct s_data
+{
+	t_mlx		mlx;
 	t_map_info	*map_info;
 	t_cast		*cast;
 	t_draw		*draw;

@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:56:35 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/15 20:41:19 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/16 20:06:21 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	main(int argc, char *argv[])
 	//atexit(check);
 	check_argv(argc, argv);
 	map_info = init_map_info(argv[1]);
-	set_map_info(map_info);
+	 set_map_info(map_info);
 	check_parsing(map_info);
 	data = init_data(map_info);
-	//printf("render\n");
-	//render(data);
+	printf("render\n");
+	render(data, &data->mlx);
 	free_data(data); // 내부에서 map_info free
 	return (0);
 }

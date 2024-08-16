@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:45:17 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/15 19:27:28 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/16 21:02:55 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,27 @@ void	set_wall_dir(t_cast *cast, t_draw *draw)
 	else
 	{
 		if (cast->dir.x == 0)
-			draw->tex_num = get_dir(cast->ray_dir.y, 'y');
-		else
 			draw->tex_num = get_dir(cast->ray_dir.x, 'x');
+		else
+			draw->tex_num = get_dir(cast->ray_dir.y, 'y');
 	}
+	printf("side=%d, dir(%f, %f), ray_dir(%f, %f)\n", draw->side, cast->dir.x, cast->dir.y, cast->ray_dir.x, cast->ray_dir.y);
 }
 
 void	calc_draw_vars(t_draw *draw)
 {
+	//화면에 그려질 선의 길이 
+	//printf("perp_wall_dist = %f\n", draw->perp_wall_dist);
 	draw->line_height = (int)(HEIGHT / draw->perp_wall_dist);
+	//printf("line H = %d\n", draw->line_height);
 	draw->start = (HEIGHT - draw->line_height) / 2;
 	if (draw->start < 0)
 		draw->start = 0;
+	//printf("start = %d\n", draw->start);
 	draw->end = (HEIGHT + draw->line_height) / 2;
 	if (draw->end >= HEIGHT)
 		draw->end = HEIGHT - 1;
+	//printf("end = %d\n", draw->end);
 }
 
 
@@ -50,7 +56,6 @@ void	calc_tex_info(t_draw *draw, t_texture *texture, t_cast *cast)
 
 	width = texture[draw->tex_num].width;
 	height = texture[draw->tex_num].height;
-	set_wall_dir(cast, draw);
 	if (draw->side == 0)
 		draw->wall_x = cast->pos.y + (draw->perp_wall_dist * cast->ray_dir.y);
 	else

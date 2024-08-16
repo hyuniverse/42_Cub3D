@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:41:04 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/15 19:27:37 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:49:35 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define CLOSE_BTN 17
 
 //render.c
-void			render(t_data *data);
+void			render(t_data *data, t_mlx *mlx);
 
 // hooks.c
 int				key_hook(int keycode);

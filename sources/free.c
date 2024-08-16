@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 13:27:35 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/15 21:01:26 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/16 13:11:56 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,8 @@ void	free_texture(t_texture *tex)
 	i = -1;
 	while (++i < 4)
 	{
-		if (tex[i].data)
-			printf("%dth data exist\n", i);
-		else
-			printf("%dth data doesn't exist\n", i);
-	}
-	i = -1;
-	while (++i < 4)
-	{
 		free(tex[i].data);
-		printf("freed data\n");
 		free(tex[i].path);
-		printf("freed path\n");
 	}
 }
 
@@ -69,8 +59,6 @@ void	free_t_map_info(t_map_info *map_info)
 void	free_data(t_data *data)
 {
 	free_t_map_info(data->map_info);
-	printf("freed map\n");
 	free(data->cast);
-	printf("freed cast\n");
 	free(data);
 }

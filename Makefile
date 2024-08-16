@@ -6,13 +6,13 @@
 #    By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/01 17:23:47 by siychoi           #+#    #+#              #
-#    Updated: 2024/08/15 18:32:38 by sehyupar         ###   ########.fr        #
+#    Updated: 2024/08/16 20:09:27 by sehyupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3d
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -O3
+CFLAGS		= -Wall -Wextra -Werror -O3 -g -fsanitize=address 
 CLIB		= -Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
 #-fsanitize=address
 RM			= rm
