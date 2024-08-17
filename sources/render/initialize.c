@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:40:49 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/16 18:53:17 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/17 19:41:06 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ unsigned int	*get_img_data(t_mlx *mlx, t_texture *tex, int idx)
 	unsigned int	*result;
 	unsigned int	*tmp;
 
-	//printf("path = %s\n", tex[idx].path);
 	mlx->img = mlx_xpm_file_to_image(mlx->mlx, tex[idx].path, \
 	&tex[idx].width, &tex[idx].height);
 	if (!mlx->img)
@@ -36,10 +35,7 @@ unsigned int	*get_img_data(t_mlx *mlx, t_texture *tex, int idx)
 	{
 		j = -1;
 		while (++j < tex[idx].width)
-		{
 			result[tex[idx].width * i + j] = tmp[tex[idx].width * i + j];
-			//printf("%d", result[tex[idx].width * i + j]);
-		}
 	}
 	mlx_destroy_image(mlx->mlx, mlx->img);
 	return (result);
@@ -70,17 +66,29 @@ t_cast	*init_cast(int x, int y, int dir)
 		return (0);
 	set_doub_vector(&cast->pos, (double)x, (double)y);
 	if (dir == NORTH)
+	{
 		set_doub_vector(&cast->dir, 0, 1);
+		set_doub_vector(&cast->plane, 0.66, 0);
+	}
 	else if (dir == SOUTH)
+	{
 		set_doub_vector(&cast->dir, 0, -1);
+		set_doub_vector(&cast->plane, -0.66, 0);
+	}
 	else if (dir == WEST)
+	{
 		set_doub_vector(&cast->dir, -1, 0);
+		set_doub_vector(&cast->plane, 0, 0.66);
+	}
 	else if (dir == EAST)
+	{
 		set_doub_vector(&cast->dir, 1, 0);
-	set_doub_vector(&cast->plane, 0, 0.66);
+		set_doub_vector(&cast->plane, 0, -0.66);
+	}
 	set_int_vector(&cast->map, 0, 0);
-	cast->time = 0;
+	cast->time = get_time();
 	cast->old_time = 0;
+	cast->initial_dir_num = dir;
 	return (cast);
 }
 

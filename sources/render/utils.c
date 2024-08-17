@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:46:19 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/16 20:58:01 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/17 18:56:06 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double	get_time(void)
 	time.tv_sec = 0;
 	time.tv_usec = 0;
 	gettimeofday(&time, 0);
-	result = (double)time.tv_sec + (double)(time.tv_usec / 1000000);
+	result = (double)(time.tv_usec);
 	return (result);
 }
 
@@ -51,18 +51,18 @@ double	get_delta(double ray_dir)
 	return (delta_dist);
 }
 
-int	get_dir(double component_value, char component)
+int	get_dir(double component_value, char component, int sign)
 {
 	if (component == 'y')
 	{
-		if (component_value > 0)
+		if (sign * component_value > 0)
 			return (SOUTH);
 		else
 			return (NORTH);
 	}
 	else
 	{
-		if (component_value > 0)
+		if (sign * component_value > 0)
 			return (WEST);
 		else
 			return (EAST);

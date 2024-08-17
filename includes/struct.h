@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 19:11:28 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/16 19:19:49 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/17 18:49:21 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_cast
 	double			move_speed;
 	double			rot_speed;
 	int				hit;
+	int				initial_dir_num;
 }	t_cast;
 
 typedef	struct s_mlx
