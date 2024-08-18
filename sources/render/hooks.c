@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:24:24 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/17 19:38:04 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/18 14:55:50 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	move_fb(char **map, t_cast *cast, int sign)
 
 	new_x = (int)(cast->pos.x + sign * cast->dir.x * cast->move_speed);
 	new_y = (int)(cast->pos.y + sign * cast->dir.y * cast->move_speed);
-	if (map[new_y][(int)cast->pos.x] && map[new_y][(int)cast->pos.x] == '0')
+	if (map[(int)cast->pos.y][new_x] && map[(int)cast->pos.y][new_x] == '0')
 		cast->pos.x += sign * cast->dir.x * cast->move_speed;
-	if (map[new_y][(int)cast->pos.x] && map[(int)cast->pos.y][new_x] == '0')
+	if (map[new_y][(int)cast->pos.x] && map[new_y][(int)cast->pos.x] == '0')
 		cast->pos.y += sign * cast->dir.y * cast->move_speed;
 }
 
@@ -47,33 +47,32 @@ void	move_lr(char **map, t_cast *cast, int sign)
 
 	new_x = (int)(cast->pos.x + sign * cast->plane.x * cast->move_speed);
 	new_y = (int)(cast->pos.y + sign * cast->plane.y * cast->move_speed);
-	if (map[new_y][(int)cast->pos.x] && map[new_y][(int)cast->pos.x] == '0')
-		cast->pos.x += sign * cast->plane.x * cast->move_speed;
 	if (map[(int)cast->pos.y][new_x] && map[(int)cast->pos.y][new_x] == '0')
+		cast->pos.x += sign * cast->plane.x * cast->move_speed;
+	if (map[new_y][(int)cast->pos.x] && map[new_y][(int)cast->pos.x] == '0')
 		cast->pos.y += sign * cast->plane.y * cast->move_speed;
 }
 
 int	key_press_hook(int keycode, t_data *data)
 {
 	if (keycode == ESC)
-		exit(0);//자원...괜찮은지 확인
+		exit(0);
 	else
 	{
-		printf("keycode = %d\n", keycode);
 		if (keycode == LEFT)
 			rotate(data->cast, 1);
 		else if (keycode == RIGHT)
 			rotate(data->cast, -1);
-		else if (keycode == W) //전
+		else if (keycode == W)
 			move_fb(data->map_info->map, data->cast, 1);
-		else if (keycode == S)  //후
+		else if (keycode == S)
 			move_fb(data->map_info->map, data->cast, -1);
-		else if (keycode == A) 
+		else if (keycode == A)
 			move_lr(data->map_info->map, data->cast, -1);
-		else if (keycode == D)  //우
+		else if (keycode == D)
 			move_lr(data->map_info->map, data->cast, 1);
 		else
-			return(0);
+			return (0);
 		draw(data, &data->mlx);
 	}
 	return (0);
@@ -81,5 +80,5 @@ int	key_press_hook(int keycode, t_data *data)
 
 int	exit_hook(void)
 {
-	exit(0); //자원 괜찮은지 확인. 아닐 경우 exit 메소드 따로 만들어야. 
+	exit(0);
 }

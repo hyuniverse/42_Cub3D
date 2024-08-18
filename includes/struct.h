@@ -6,13 +6,12 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 19:11:28 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/17 18:49:21 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:11:28 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-
 
 typedef struct s_texture
 {
@@ -25,11 +24,7 @@ typedef struct s_texture
 typedef struct s_map_info
 {
 	char			*file_path;
-	// char			*north_texture;
-	// char			*south_texture;
-	// char			*west_texture;
-	// char			*east_texture;
-	t_texture	texture[4]; //n, s, w, e
+	t_texture		texture[4];
 	unsigned int	floor_color;
 	unsigned int	ceiling_color;
 	int				texture_cnt;
@@ -78,7 +73,7 @@ typedef struct s_cast
 	t_doub_vector	pos;
 	t_doub_vector	dir;
 	t_doub_vector	plane;
-	t_doub_vector	camera;//y도 필요한가?
+	t_doub_vector	camera;
 	t_doub_vector	ray_dir;
 	t_doub_vector	side_dist;
 	t_doub_vector	delta_dist;
@@ -89,10 +84,9 @@ typedef struct s_cast
 	double			move_speed;
 	double			rot_speed;
 	int				hit;
-	int				initial_dir_num;
 }	t_cast;
 
-typedef	struct s_mlx
+typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
@@ -102,7 +96,6 @@ typedef	struct s_mlx
 	int			line_length;
 	int			endian;
 }	t_mlx;
-
 
 typedef struct s_data
 {

@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:43:26 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/17 19:55:03 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/18 13:04:53 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	raycast(t_mlx *mlx, t_map_info *map_info, t_cast *cast, t_draw *draw)
 			draw->perp_wall_dist = (cast->side_dist.y - cast->delta_dist.y);
 		calc_draw_vars(draw);
 		set_wall_dir(cast, draw);
-		// printf("wall dir = %d/ dir(%f, %f), ray(%f, %f)\n", draw->tex_num, cast->dir.x, cast->dir.y, cast->ray_dir.x, cast->ray_dir.y);
 		calc_tex_info(draw, map_info->texture, cast);
 		y = draw->start - 1;
 		while (++y < draw->end)
@@ -72,11 +71,8 @@ void	raycast(t_mlx *mlx, t_map_info *map_info, t_cast *cast, t_draw *draw)
 void	draw(t_data *data, t_mlx *mlx)
 {
 	mlx_clear_window(mlx->mlx, mlx->win);
-	printf("window cleared\n");
 	draw_background(mlx, data->map_info);
-	printf("drew background\n");
 	raycast(mlx, data->map_info, data->cast, data->draw);
-	printf("done raycast\n");
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:09:54 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/15 19:12:34 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:05:46 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,5 @@ int		open_file(char *path);
 int		cub3d_strcmp(const char *s1, const char *s2);
 void	print_error(char *error_msg);
 int		is_num(char c);
-
-/*-----free.c-----*/
-void	free_2d_array(char **str);
-void	free_t_map_info(t_map_info *map_info);
 
 #endif

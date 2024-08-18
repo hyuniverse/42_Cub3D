@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:41:04 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/17 19:57:02 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:12:44 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,34 @@
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
 
-//render.c
+/* render.c */
 void			draw(t_data *data, t_mlx *mlx);
 void			render(t_data *data, t_mlx *mlx);
 
-// hooks.c
+/* hooks.c */
 int				key_press_hook(int keycode, t_data *data);
 int				exit_hook(void);
 int				key_release_hook(int keycode, t_data *data);
-// initialize.c
+
+/* initialize.c */
 t_data			*init_data(t_map_info *map_info);
 
-//utils.c
+/* utils.c */
 void			set_doub_vector(t_doub_vector *vec, double x, double y);
 void			set_int_vector(t_int_vector *vec, int x, int y);
 double			get_time(void);
 double			get_delta(double ray_dir);
 int				get_dir(double component_value, char component, int sign);
 
-//raycast_methods.c
+/* raycast_methods.c */
 void			set_wall_dir(t_cast *cast, t_draw *draw);
 void			calc_draw_vars(t_draw *draw);
 void			calc_tex_info(t_draw *draw, t_texture *texture, t_cast *cast);
 unsigned int	get_color(t_draw *draw, t_texture *texture);
 void			modify_speed(t_cast *cast);
 
+/* dda.c */
 void			digital_differential_analyzer(t_cast *cast, t_map_info *map, \
 t_draw *draw, int x);
-
-void			free_data(t_data *data);
 
 #endif
