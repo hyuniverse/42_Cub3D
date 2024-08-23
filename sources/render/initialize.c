@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:40:49 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/23 13:02:23 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:35:40 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,23 @@ void	init_dir_plane_vec(t_cast *cast, int dir)
 {
 	if (dir == NORTH)
 	{
-		set_doub_vector(&cast->dir, 0, 1);
+		set_doub_vector(&cast->dir, 0, -1);
 		set_doub_vector(&cast->plane, 0.66, 0);
 	}
 	else if (dir == SOUTH)
 	{
-		set_doub_vector(&cast->dir, 0, -1);
+		set_doub_vector(&cast->dir, 0, 1);
 		set_doub_vector(&cast->plane, -0.66, 0);
 	}
 	else if (dir == WEST)
 	{
 		set_doub_vector(&cast->dir, -1, 0);
-		set_doub_vector(&cast->plane, 0, 0.66);
+		set_doub_vector(&cast->plane, 0, -0.66);
 	}
 	else if (dir == EAST)
 	{
 		set_doub_vector(&cast->dir, 1, 0);
-		set_doub_vector(&cast->plane, 0, -0.66);
+		set_doub_vector(&cast->plane, 0, 0.66);
 	}
 }
 
@@ -86,9 +86,8 @@ t_cast	*init_cast(int x, int y, int dir)
 	cast = (t_cast *)malloc(sizeof(t_cast));
 	if (!cast)
 		print_error("Error");
-	set_doub_vector(&cast->pos, (double)x, (double)y);
+	set_doub_vector(&cast->pos, (double)x + 0.5, (double)y + 0.5);
 	init_dir_plane_vec(cast, dir);
-	set_int_vector(&cast->map, 0, 0);
 	cast->time = get_time();
 	cast->old_time = 0;
 	return (cast);

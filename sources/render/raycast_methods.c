@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:45:17 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/17 19:40:38 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:41:23 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	calc_tex_info(t_draw *draw, t_texture *texture, t_cast *cast)
 		draw->wall_x = cast->pos.x + (draw->perp_wall_dist * cast->ray_dir.x);
 	draw->wall_x -= (int)draw->wall_x;
 	draw->tex.x = (int)(draw->wall_x * (double)width);
-	if ((draw->side == 0 && cast->ray_dir.x > 0) || \
-	(draw->side == 1 && cast->ray_dir.y < 0))
+	if (!(draw->side == 0 && cast->ray_dir.x > 0) && \
+	!(draw->side == 1 && cast->ray_dir.y < 0))
 		draw->tex.x = width - draw->tex.x - 1;
 	draw->step = (double)height / draw->line_height;
 	draw->tex_pos = (draw->start + (draw->line_height - HEIGHT) / 2) \

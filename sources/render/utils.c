@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:46:19 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/17 18:56:06 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:53:54 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	get_dir(double component_value, char component, int sign)
 	else
 	{
 		if (sign * component_value > 0)
-			return (WEST);
-		else
 			return (EAST);
+		else
+			return (WEST);
 	}
 }

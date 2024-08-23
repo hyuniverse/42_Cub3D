@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:24:24 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/18 14:55:50 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:41:14 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	key_press_hook(int keycode, t_data *data)
 	else
 	{
 		if (keycode == LEFT)
-			rotate(data->cast, 1);
-		else if (keycode == RIGHT)
 			rotate(data->cast, -1);
+		else if (keycode == RIGHT)
+			rotate(data->cast, 1);
 		else if (keycode == W)
 			move_fb(data->map_info->map, data->cast, 1);
 		else if (keycode == S)
