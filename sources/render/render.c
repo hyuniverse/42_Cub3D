@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:43:26 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/18 13:04:53 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:01:04 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	draw_background(t_mlx *mlx, t_map_info *map_info)
 	}
 }
 
-void	raycast(t_mlx *mlx, t_map_info *map_info, t_cast *cast, t_draw *draw)
+void	draw_wall(t_mlx *mlx, t_map_info *map_info, t_cast *cast, t_draw *draw)
 {
 	unsigned int	color;
 	int				x;
@@ -50,7 +50,7 @@ void	raycast(t_mlx *mlx, t_map_info *map_info, t_cast *cast, t_draw *draw)
 	x = -1;
 	while (++x < WIDTH)
 	{
-		digital_differential_analyzer(cast, map_info, draw, x);
+		dda(cast, map_info, draw, x);
 		if (draw->side == 0)
 			draw->perp_wall_dist = (cast->side_dist.x - cast->delta_dist.x);
 		else
@@ -72,7 +72,7 @@ void	draw(t_data *data, t_mlx *mlx)
 {
 	mlx_clear_window(mlx->mlx, mlx->win);
 	draw_background(mlx, data->map_info);
-	raycast(mlx, data->map_info, data->cast, data->draw);
+	draw_wall(mlx, data->map_info, data->cast, data->draw);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 

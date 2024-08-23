@@ -6,14 +6,13 @@
 #    By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/01 17:23:47 by siychoi           #+#    #+#              #
-#    Updated: 2024/08/18 15:09:41 by sehyupar         ###   ########.fr        #
+#    Updated: 2024/08/23 12:58:11 by sehyupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3d
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -O3 
-#-g -fsanitize=address 
+CFLAGS		= -Wall -Wextra -Werror -O3 -g -fsanitize=address 
 CLIB		= -Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
 RM			= rm
 RMFLAG		= -f
@@ -28,7 +27,7 @@ PARSE_SRCS	= $(addprefix $(PARSE_DIR), check_error.c check_map_wall.c \
 			  check_texture_path.c cub3d_split.c map_info.c struct_map.c \
 			  texture_info_color.c texture_info.c utils.c)
 RENDER_SRCS	= $(addprefix $(RENDER_DIR), render.c dda.c raycast_methods.c \
-			  initialize.c utils.c hooks.c render_error.c)
+			  initialize.c utils.c hooks.c)
 
 all : $(NAME)
 

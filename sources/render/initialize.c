@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:40:49 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/18 15:17:02 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:02:23 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	load_xpm_textures(t_map_info *map_info, t_mlx *mlx)
 		texture[i].data = get_img_data(mlx, texture, i);
 		if (!texture[i].data)
 			print_error("Error");
-		//path free를 여기서 할까..? 
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:41:04 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/18 15:12:44 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:01:04 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ unsigned int	get_color(t_draw *draw, t_texture *texture);
 void			modify_speed(t_cast *cast);
 
 /* dda.c */
-void			digital_differential_analyzer(t_cast *cast, t_map_info *map, \
+void			dda(t_cast *cast, t_map_info *map, \
 t_draw *draw, int x);
 
 #endif

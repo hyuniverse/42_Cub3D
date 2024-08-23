@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 15:17:03 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/18 13:04:22 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:01:04 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_vars_before_analyze(t_cast *cast, int x)
 	init_step_and_side_dist(cast);
 }
 
-void	digital_differential_analyzer(t_cast *cast, t_map_info *map, \
+void	dda(t_cast *cast, t_map_info *map, \
 t_draw *draw, int x)
 {
 	init_vars_before_analyze(cast, x);
