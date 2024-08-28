@@ -6,7 +6,7 @@
 /*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 19:53:04 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/28 16:08:40 by siychoi          ###   ########.fr       */
+/*   Updated: 2024/08/28 16:39:51 by siychoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	get_texture(t_map_info *map_info, int fd)
 		set_texture_info1(map_info, line);
 		map_info->texture_cnt++;
 		free(line);
-		line = get_next_line(fd);
+		if (map_info->texture_cnt < 6)
+			line = get_next_line(fd);
 	}
 	if (map_info->texture_cnt < 6)
 		print_error("empty file?\n");
