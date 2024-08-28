@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 19:53:04 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/15 19:16:42 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:08:40 by siychoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 
 void	get_texture(t_map_info *map_info, int fd)
 {
-	char	*gnl_return;
+	char	*line;
 
-	while (map_info->texture_cnt < 6 && (gnl_return = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL && map_info->texture_cnt < 6)
 	{
-		if (*gnl_return == '\n')
+		if (*line == '\n')
 		{
-			free(gnl_return);
+			free(line);
+			line = get_next_line(fd);
 			continue ;
 		}
-		else if (is_map_element(gnl_return) == TRUE)
+		else if (is_map_element(line) == TRUE)
 			print_error("Error");
-		else if (is_texture_element(gnl_return) != TRUE)
+		else if (is_texture_element(line) != TRUE)
 			print_error("Error");
-		set_texture_info(map_info, gnl_return);
+		set_texture_info1(map_info, line);
 		map_info->texture_cnt++;
-		free(gnl_return);
+		free(line);
+		line = get_next_line(fd);
 	}
 	if (map_info->texture_cnt < 6)
 		print_error("empty file?\n");
@@ -39,7 +42,7 @@ int	is_texture_element(char *line)
 {
 	char	**splited_line;
 	int		result;
-	
+
 	splited_line = cub3d_split(line, ' ');
 	result = TRUE;
 	if (is_texture_identifier(splited_line[0]) == FALSE)
@@ -49,7 +52,7 @@ int	is_texture_element(char *line)
 	else if (splited_line[2] != NULL)
 		result = FALSE;
 	free_2d_array(splited_line);
-	return (result);	
+	return (result);
 }
 
 int	is_texture_identifier(char *identifier)
@@ -69,25 +72,40 @@ int	is_texture_identifier(char *identifier)
 	return (FALSE);
 }
 
-void	set_texture_info(t_map_info *map_info, char *line)
+void	set_texture_info2(t_map_info *map_info, char **splited_line)
+{
+	if (cub3d_strcmp(splited_line[0], "EA") == 0 && \
+	map_info->texture[EAST].path == NULL)
+		map_info->texture[EAST].path = \
+		ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
+	else if (cub3d_strcmp(splited_line[0], "F") == 0 && \
+	map_info->floor_color == (unsigned int)-1)
+		map_info->floor_color = str_to_rgb(splited_line[1]);
+	else if (cub3d_strcmp(splited_line[0], "C") == 0 && \
+	map_info->ceiling_color == (unsigned int)-1)
+		map_info->ceiling_color = str_to_rgb(splited_line[1]);
+	else
+		print_error("Error0");
+}
+
+void	set_texture_info1(t_map_info *map_info, char *line)
 {
 	char	**splited_line;
 
 	splited_line = cub3d_split(line, ' ');
-	if (cub3d_strcmp(splited_line[0], "NO") == 0 && map_info->texture[NORTH].path == NULL)
-		map_info->texture[NORTH].path = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
-	else if (cub3d_strcmp(splited_line[0], "SO") == 0 && map_info->texture[SOUTH].path == NULL)
-		map_info->texture[SOUTH].path= ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
-	else if (cub3d_strcmp(splited_line[0], "WE") == 0 && map_info->texture[WEST].path == NULL)
-		map_info->texture[WEST].path = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
-	else if (cub3d_strcmp(splited_line[0], "EA") == 0 && map_info->texture[EAST].path == NULL)
-		map_info->texture[EAST].path = ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
-	else if (cub3d_strcmp(splited_line[0], "F") == 0 && map_info->floor_color == (unsigned int)-1)
-		map_info->floor_color = str_to_rgb(splited_line[1]);
-	else if (cub3d_strcmp(splited_line[0], "C") == 0 && map_info->ceiling_color == (unsigned int)-1)
-		map_info->ceiling_color = str_to_rgb(splited_line[1]);
+	if (cub3d_strcmp(splited_line[0], "NO") == 0 && \
+	map_info->texture[NORTH].path == NULL)
+		map_info->texture[NORTH].path = \
+		ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
+	else if (cub3d_strcmp(splited_line[0], "SO") == 0 && \
+	map_info->texture[SOUTH].path == NULL)
+		map_info->texture[SOUTH].path = \
+		ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
+	else if (cub3d_strcmp(splited_line[0], "WE") == 0 && \
+	map_info->texture[WEST].path == NULL)
+		map_info->texture[WEST].path = \
+		ft_substr(splited_line[1], 0, ft_strlen(splited_line[1]) - 1);
 	else
-		print_error("Error0");
-	//check_texture_path(map_info, splited_line[0]);
+		set_texture_info2(map_info, splited_line);
 	free_2d_array(splited_line);
 }

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_map_wall2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 10:56:35 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/28 15:06:23 by siychoi          ###   ########.fr       */
+/*   Created: 2024/08/28 15:15:54 by siychoi           #+#    #+#             */
+/*   Updated: 2024/08/28 15:16:52 by siychoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/parse.h"
 
-int	main(int argc, char *argv[])
+void	check_wall(t_map_info *map_info)
 {
-	t_map_info	*map_info;
-	t_data		*data;
+	int	x;
+	int	y;
 
-	check_argv(argc, argv);
-	map_info = init_map_info(argv[1]);
-	set_map_info(map_info);
-	data = init_data(map_info);
-	render(data, &data->mlx);
-	free_data(data);
-	return (0);
+	y = 0;
+	while (y < map_info->map_height)
+	{
+		x = 0;
+		while (x < map_info->map_width)
+		{
+			if (map_info->map[y][x] == 'N' || map_info->map[y][x] == 'S' || \
+			map_info->map[y][x] == 'W' || map_info->map[y][x] == 'E' || \
+			map_info->map[y][x] == '0' )
+				check_nsew_wall(map_info, x, y);
+			x++;
+		}
+		y++;
+	}
 }

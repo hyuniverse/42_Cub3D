@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+         #
+#    By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/01 17:23:47 by siychoi           #+#    #+#              #
-#    Updated: 2024/08/23 13:25:44 by sehyupar         ###   ########.fr        #
+#    Updated: 2024/08/28 15:25:40 by siychoi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3d
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -O3 #-g -fsanitize=address 
+CFLAGS		= -Wall -Wextra -Werror -O3 -g -fsanitize=address 
 CLIB		= -Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
 RM			= rm
 RMFLAG		= -f
@@ -22,9 +22,9 @@ OBJS		= $(SRCS:.c=.o)
 COMMON_DIR	= ./sources/
 PARSE_DIR	= ./sources/parse/
 RENDER_DIR	= ./sources/render/
-COMMON_SRCS	= $(addprefix $(COMMON_DIR), main.c utils.c free.c debug.c)
-PARSE_SRCS	= $(addprefix $(PARSE_DIR), check_error.c check_map_wall.c \
-			  check_texture_path.c cub3d_split.c map_info.c struct_map.c \
+COMMON_SRCS	= $(addprefix $(COMMON_DIR), main.c utils.c free.c)
+PARSE_SRCS	= $(addprefix $(PARSE_DIR), check_error.c check_map_wall.c check_map_wall2.c\
+			  check_texture_path.c cub3d_split.c map_info.c map_info2.c struct_map.c \
 			  texture_info_color.c texture_info.c utils.c)
 RENDER_SRCS	= $(addprefix $(RENDER_DIR), render.c dda.c raycast_methods.c \
 			  initialize.c utils.c hooks.c)

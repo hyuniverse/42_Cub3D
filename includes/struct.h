@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 19:11:28 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/18 15:11:28 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:08:31 by siychoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_cub
 {
 	t_map_info		map_info;
 }t_cub;
-
 
 typedef struct s_doub_vector
 {

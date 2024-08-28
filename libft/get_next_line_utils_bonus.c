@@ -40,7 +40,8 @@ char	*gnl_strjoin(char *s1, char *s2)
 			return (NULL);
 		s1[0] = '\0';
 	}
-	result = (char *)malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1));
+	result = (char *)malloc(sizeof(char) * \
+	(gnl_strlen(s1) + gnl_strlen(s2) + 1));
 	if (result == NULL)
 	{
 		free(s1);

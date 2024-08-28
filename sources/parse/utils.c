@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:58:28 by siychoi           #+#    #+#             */
-/*   Updated: 2024/08/18 15:08:27 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:11:24 by siychoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	cub3d_strcmp(const char *s1, const char *s2)
 		return (0);
 	return (1);
 }
-
-
 
 int	is_num(char c)
 {
