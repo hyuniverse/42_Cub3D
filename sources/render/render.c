@@ -6,7 +6,7 @@
 /*   By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 18:43:26 by sehyupar          #+#    #+#             */
-/*   Updated: 2024/08/23 15:39:49 by sehyupar         ###   ########.fr       */
+/*   Updated: 2024/08/28 17:58:25 by sehyupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	draw_wall(t_mlx *mlx, t_map_info *map_info, t_cast *cast, t_draw *draw)
 			draw->perp_wall_dist = (cast->side_dist.x - cast->delta_dist.x);
 		else
 			draw->perp_wall_dist = (cast->side_dist.y - cast->delta_dist.y);
+		if (draw->perp_wall_dist < 0.1)
+			draw->perp_wall_dist = 0.1;
 		calc_draw_vars(draw);
 		set_wall_dir(cast, draw);
 		calc_tex_info(draw, map_info->texture, cast);
