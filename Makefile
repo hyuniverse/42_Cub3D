@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: siychoi <siychoi@student.42.fr>            +#+  +:+       +#+         #
+#    By: sehyupar <sehyupar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/01 17:23:47 by siychoi           #+#    #+#              #
-#    Updated: 2024/08/28 16:27:26 by siychoi          ###   ########.fr        #
+#    Updated: 2024/08/29 11:44:47 by sehyupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,15 +36,17 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 		make -C Libft
+		make -C mlx
 		$(CC) $(CFLAGS) $(CLIB) -o $@ $^ -LLibft -lft -Iincludes
 
 clean :
 		$(RM) $(RMFLAG) $(OBJS)
+		make -C mlx clean
 		make -C Libft clean
 
-fclean :
-		$(RM) $(RMFLAG) $(OBJS) $(NAME)
-		make -C Libft fclean
+fclean : clean
+		$(RM) $(RMFLAG) $(NAME)
+		$(RM) $(RMFLAG) ./Libft/libft.a
 
 re : fclean
 	$(MAKE) all
